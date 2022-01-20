@@ -1,5 +1,5 @@
 import './App.css';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './Header/Header';
 import SideBar from './SideBar/SideBar';
@@ -20,12 +20,12 @@ function App() {
             <Header />
           </Row>
           <Row>
-            <HashRouter>
+            <BrowserRouter>
               <Routes>
-                <Route exact path="/" element={ <Home/> } />
-                <Route exact path="/dashboard" element={ <DashBoard/> } />
+                <Route path="/" element={ <Home /> } />
+                <Route path="dashboard" element={<DashBoard />} />
               </Routes>
-            </HashRouter>
+            </BrowserRouter>
           </Row>
         </Col>
       </Row>
