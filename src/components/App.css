@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,18 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-panel {
+  background: rgba(203, 203, 210, 0.15);
+  position: relative;
+  float: right;
+  /* width: calc(100% - 260px); */
+  width: 80%;
+  min-height: 100%;
 }
