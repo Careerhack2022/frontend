@@ -1,0 +1,9 @@
+.dropdown{
+    position:absolute;
+    margin-top:80px;
+    margin-left: 10px;
+    width: 150px;
+    /* background-color: #e3e7ec; */
+    border-color: rgba(255, 255, 255, 0.442);
+    color: black; 
+}

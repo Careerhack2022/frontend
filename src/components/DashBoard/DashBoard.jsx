@@ -1,9 +1,11 @@
 import './DashBoard.css';
-
+import {useState} from 'react';
+import Select from './Select';
 function DashBoard() {
+    const [device,setDevice] = useState([]);
     
     return (
-        <p>DashBoard</p>
+        <Select  add = {setDevice} />
     );
 }
 
