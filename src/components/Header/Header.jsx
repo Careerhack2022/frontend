@@ -10,7 +10,7 @@ function Header() {
     <>
 
       <Navbar fixed='top' expand = 'sm'bg='dark' variant = 'dark'>
-        <Container collapseOnSelect >
+        <Container  >
             <Navbar.Brand>
               Careerhack
             </Navbar.Brand>

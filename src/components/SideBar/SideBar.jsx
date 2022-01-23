@@ -36,9 +36,9 @@ const SideBar = () => {
         <ProSidebar fixed ='top'>
           
           <SidebarContent>
-            <Menu active = {true} iconShape="square">
+            <Menu active = 'true' iconShape="square">
               <MenuItem icon={<FiHome />} >
-              <a href = '/' >Home</a>
+              <a href = '/' className = 'text' >Home</a>
               </MenuItem>
               <MenuItem icon={<BsFillBarChartLineFill />}><a href = '/DashBoard' className = 'text'>DashBoard</a></MenuItem>
               
