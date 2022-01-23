@@ -1,5 +1,3 @@
-import './Home.css';
-import background from '../Image/background4.jpeg';
 import {
     Badge,
     Button,
@@ -14,8 +12,8 @@ import {
     OverlayTrigger,
     Tooltip,
   } from "react-bootstrap";
-const Home =()=> {
-    return (
+const Aboutus =()=>{
+    return(
         <Container>
             <Row>
                 <Col xs = '12' lg = '12' sm = '12' md='12' >
@@ -31,7 +29,7 @@ const Home =()=> {
                 </Col>
                 <Col xs = '9' lg = '11' sm = '12' md='12' style={{height:'80rem'}}>
                     <Row style={{height:'100px'}}><Col><p> </p></Col></Row>
-                    <big className='title'>Welcome to Careerhack</big> 
+                    <big className='title'>About Us</big> 
                    {/* <Card style={{height:'100rem'}}>
                         
                     </Card> */}
@@ -42,4 +40,4 @@ const Home =()=> {
     );
 }
 
-export default Home;
+export default Aboutus;

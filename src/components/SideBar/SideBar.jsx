@@ -27,14 +27,23 @@ import "./SideBar.css";
 
 const SideBar = () => {
   
-   
-
+  const [menucollapse,setMenu] = useState((window.innerWidth<window.innerHeight)?true:false);
+  
+  const menuclick = () =>{
+    menucollapse?setMenu(false):setMenu(true);
+  }
+  console.log(window.innerHeight,window.innerWidth);
+  
   return (
     <>
       <div id="header">
           {/* collapsed props to change menu size using menucollapse state */}
-        <ProSidebar fixed ='top'>
-          
+        <ProSidebar fixed ='top' collapsed = {menucollapse}>
+          <SidebarHeader>
+            <div className="close-menu" onClick={menuclick}>
+              {menucollapse?(<FiArrowRightCircle/>):(<FiArrowLeftCircle/>)}
+            </div>
+          </SidebarHeader>
           <SidebarContent>
             <Menu active = 'true' iconShape="square">
               <MenuItem icon={<FiHome />} >
@@ -42,8 +51,8 @@ const SideBar = () => {
               </MenuItem>
               <MenuItem icon={<BsFillBarChartLineFill />}><a href = '/DashBoard' className = 'text'>DashBoard</a></MenuItem>
               
-              <MenuItem icon={< RiPencilLine/>}><a href = '/' className = 'text'>Analysis</a></MenuItem>
-              <MenuItem icon={<BiCog />}><a href = '/' className = 'text'>Settings</a></MenuItem>
+              <MenuItem icon={< RiPencilLine/>}><a href = '/Analysis' className = 'text'>Analysis</a></MenuItem>
+              <MenuItem icon={<BiCog />}><a href = '/Settings' className = 'text'>Settings</a></MenuItem>
             </Menu>
           </SidebarContent>
           <SidebarFooter>

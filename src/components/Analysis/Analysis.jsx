@@ -1,5 +1,3 @@
-import './Home.css';
-import background from '../Image/background4.jpeg';
 import {
     Badge,
     Button,
@@ -14,10 +12,11 @@ import {
     OverlayTrigger,
     Tooltip,
   } from "react-bootstrap";
-const Home =()=> {
-    return (
+
+const Analysis =()=>{
+    return(
         <Container>
-            <Row>
+            <Row style={{height:'100px'}}>
                 <Col xs = '12' lg = '12' sm = '12' md='12' >
                     <Card>
                             <Card.Body>
@@ -29,12 +28,12 @@ const Home =()=> {
             <Row>
                 <Col xs = '3' sm = '2' md = '2' lg = '1'><p> </p>
                 </Col>
-                <Col xs = '9' lg = '11' sm = '12' md='12' style={{height:'80rem'}}>
-                    <Row style={{height:'100px'}}><Col><p> </p></Col></Row>
-                    <big className='title'>Welcome to Careerhack</big> 
-                   {/* <Card style={{height:'100rem'}}>
-                        
-                    </Card> */}
+                <Col xs = '9' lg = '11' sm = '12' md='12'>
+                   <Card style={{height:'100rem'}}>
+                   <Card.Header>
+                            <Card.Title as="h1" style={{fontWeight:'600'}}>Analysis</Card.Title>
+                        </Card.Header>
+                    </Card>
                 </Col>
                 
             </Row>
@@ -42,4 +41,4 @@ const Home =()=> {
     );
 }
 
-export default Home;
+export default Analysis;

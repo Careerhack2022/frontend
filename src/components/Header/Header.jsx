@@ -1,8 +1,8 @@
 import './Header.css';
-
+import image from '../Image/logo.png';
 import { Navbar, Container,Nav } from 'react-bootstrap';
-import {BrowserRouter as Router} from 'react-router-dom';
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon, MDBContainer } from 'mdbreact';
+//import {BrowserRouter as Router} from 'react-router-dom';
+//import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon, MDBContainer } from 'mdbreact';
 function Header() {
 
 
@@ -11,13 +11,15 @@ function Header() {
 
       <Navbar fixed='top' expand = 'sm'bg='dark' variant = 'dark'>
         <Container  >
+            <img src = {image} height={25} width={25} style={{marginRight:'5px'}}/>
             <Navbar.Brand>
+              
               Careerhack
             </Navbar.Brand>
             <Navbar.Toggle aria-controls='responsive-navbar-nav'/>
 
             <Navbar.Collapse>
-              <Nav.Link href = '/'>Home</Nav.Link>
+              <Nav.Link href = '/Aboutus' style = {{color:'white'}}>Aboutus</Nav.Link>
             </Navbar.Collapse>
 
         </Container>
