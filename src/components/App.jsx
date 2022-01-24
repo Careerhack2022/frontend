@@ -13,7 +13,7 @@ import background from './Image/background4.jpeg';
 function App() {
   return (
     <div  style ={{backgroundImage:`url(${background})`,margin:'0',padding:'0'}}>
-      <Container fluid>
+      <Container fluid  style={{padding:'0px 0px 0px'}}>
       <Row  style={{height:'150rem',fixed:'top',margin:'0px 0px'}}>
         
           <SideBar />
