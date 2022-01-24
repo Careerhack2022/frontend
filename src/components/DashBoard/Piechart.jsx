@@ -32,8 +32,8 @@ const Piechart=({PieData})=> {
       tmp.push(ele);
       data.push(tmp);
     }
-    var w = '400px';
-    var h  = '400px';
+    var w = '350px';
+    var h  = '350px';
     if(window.innerWidth<450 ){
       w = '250px';
       h = '200px';

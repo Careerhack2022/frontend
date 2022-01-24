@@ -160,7 +160,7 @@ function DashBoard() {
                 </Col>
                 <Col xs = '12' lg = '11' sm = '12' md='12'>
                     <Card  bg='transparent'>
-                        <Card.Header className='header'>
+                        <Card.Header >
                             <Card.Title as="h1" className='title'>DashBoard</Card.Title>
                         </Card.Header>
                         <Card.Body  >
@@ -176,7 +176,7 @@ function DashBoard() {
                                         </Col>
                                         <Col xs="12">
                                             <div className="numbers">
-                                            <p className="text" >Electricity</p>
+                                            <p className="header" >Electricity</p>
                                             <Card.Title as="h4">{electricity} Wattage</Card.Title>
                                             </div>
                                         </Col>
@@ -190,6 +190,7 @@ function DashBoard() {
                                         </div>
                                     </Card.Footer>
                                 </Card>
+                                <Row style={{height:'5px'}}></Row>
                             </Col>
                             <Col lg = '4' sm = '6' xs = '12' md = '6'>
                                 <Card className="card-stats">
@@ -202,7 +203,7 @@ function DashBoard() {
                                         </Col>
                                         <Col xs="12">
                                             <div className="numbers">
-                                            <p className="text">Electricity Bill</p>
+                                            <p className="header">Electricity Bill</p>
                                             <Card.Title as="h4">$ {bill}</Card.Title>
                                             </div>
                                         </Col>
@@ -216,6 +217,7 @@ function DashBoard() {
                                         </div>
                                 </Card.Footer>
                                 </Card>
+                                <Row style={{height:'5px'}}></Row>
                             </Col>
                             <Col lg = '4' sm = '6' xs = '12' md = '6'>
                                 <Card className="card-stats">
@@ -228,7 +230,7 @@ function DashBoard() {
                                         </Col>
                                         <Col xs="12">
                                             <div className="numbers">
-                                            <p className="text">Electricity Bill</p>
+                                            <p className="header">Electricity Bill</p>
                                             <Card.Title as="h4">$ {bill}</Card.Title>
                                             </div>
                                         </Col>
@@ -242,6 +244,7 @@ function DashBoard() {
                                         </div>
                                 </Card.Footer>
                                 </Card>
+                                <Row style={{height:'5px'}}></Row>
                             </Col>
                         
                         </Row>
@@ -253,16 +256,11 @@ function DashBoard() {
                 
                             <Col md="6" lg = '6' sm = '12' xs='12'>
                                 <Card>
-                                    <Card.Header>
-                                        <Col>
-                                            <Card.Title as="h4">Electricity Consumption</Card.Title>
-
-                                        </Col>
-                        
-                                    </Card.Header>
+                                    
                                     <Card.Body>
                                         <Row mg = '1'>
-                                            <Col><p> </p></Col>
+                                            <Col ><Card.Title as="h4"><p className="header">Electricity Consumption</p></Card.Title></Col>
+                                            
                                         </Row>
                                         <Row>
                                             
@@ -280,13 +278,13 @@ function DashBoard() {
                                     </Card.Body>
                                     
                                 </Card>
+                                <Row style={{height:'5px'}}></Row>
                             </Col>
                             <Col md="6" lg = '6' xs='12' sm='12' >
                                 <Card >
-                                    <Card.Header>
-                                        <Card.Title as="h4"> PieChart</Card.Title>
-                                    </Card.Header>
+                                    
                                     <Card.Body>
+                                    <Card.Title as="h4"> <p className="header">Pie Chart</p></Card.Title>
                                         <div className="ct-chart" id="chartHours">
                                             <Piechart PieData = {LineData}/>
                                         </div>

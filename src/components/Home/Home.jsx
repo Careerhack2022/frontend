@@ -25,12 +25,13 @@ const Home =()=> {
             <Row>
                 <Col xs = '1' sm = '2' md = '2' lg = '2'><p> </p>
                 </Col>
-                <Col xs = '9' lg = '10' sm = '10' md='10' style={{height:'80rem'}}>
+                <Col xs = '10' lg = '10' sm = '10' md='10' style={{height:'80rem'}}>
                     <Row style={{height:'100px'}}><Col><p> </p></Col></Row>
                     <Card bg='transparent'>
                         <big className='title'>Welcome to Careerhack</big> 
                         <Card.Body>
-                            <big style={{color:'white'}}>Realize your energy&nbsp;&nbsp;X&nbsp;&nbsp;Save your energy</big>
+                            {(window.innerWidth<450)?(<div><big  style={{color:'white'}}>Realize your energy</big><big style={{color:'white'}}><br/>X<br/></big><big style={{color:'white'}}>Save your energy</big></div>):(<big  style={{color:'white'}}>Realize your energy&nbsp;&nbsp;X&nbsp;&nbsp;Save your energy</big>)}
+                            
                             
                             
                         </Card.Body>

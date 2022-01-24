@@ -26,9 +26,17 @@ const Analysis =()=>{
                 </Col>
                 <Col xs = '12' lg = '11' sm = '12' md='12'>
                    <Card style={{height:'100rem'}} bg = 'transparent'>
-                   <Card.Header>
+                        <Card.Header>
                             <Card.Title ><big className='title'>Analysis</big> </Card.Title>
                         </Card.Header>
+                        <Card.Body>
+                            <Col xs='12' md='12' sm='12' lg='12'>
+                                <Card style={{height:'800px'}}>
+
+                                </Card>
+                            </Col>
+                        </Card.Body>
+                    
                     </Card>
                 </Col>
                 
