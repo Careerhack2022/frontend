@@ -5,7 +5,7 @@ import Chart from 'react-google-charts'
 
 
 
-const Linechart =({LineData})=> {
+const Line =({LineData})=> {
   const LineChartOptions = {
     hAxis:{
       viewWindow: {
@@ -41,27 +41,26 @@ const Linechart =({LineData})=> {
 
   }
     // console.log(LineData);
-    var w = '350px';
-    var h  = '350px';
+    var w = '600px';
+    var h  = '600px';
     console.log(window.innerWidth);
     if(window.innerWidth<450 ){
       w = '250px';
       h = '200px';
     }
     else if(window.innerWidth<800){
-      w = '200px';
-      h = '200px';
-    }
-    else if(window.innerWidth<1000 ){
-      w = '280px';
-      h = '280px';
-    }
-    else if(window.innerWidth>1300 ){
       w = '400px';
       h = '400px';
     }
-    
-    console.log("line",w,h);
+    else if(window.innerWidth<1000 ){
+      w = '500px';
+      h = '500px';
+    }
+    else if(window.innerWidth>1300 ){
+      w = '800px';
+      h = '800px';
+    }
+     console.log("line",w,h);
     return (
       <div className="container mt-5">
         
@@ -80,4 +79,4 @@ const Linechart =({LineData})=> {
   
 }
 
-export default Linechart
+export default Line;

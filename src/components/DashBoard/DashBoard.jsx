@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 import Select from './Select';
 import Linechart from './Linechart';
 import Piechart from './Piechart';
+import Chart from 'react-google-charts';
+import MaterialTable from 'material-table';
 // react-bootstrap components
 import {
   Badge,
@@ -22,91 +24,18 @@ import {
 //import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
 import { getDeviceDataAll, getDeviceDataOne } from '../api/device';
+import { RiMapPinRangeFill } from 'react-icons/ri';
 
-const LineData = [
-    ['x', '電視', '電風扇','空氣清淨機','烤箱','吹風機'],
-    ['01/23/13:30', 0, 0,25,56,235],
-    ['01/23/13:45', 10, 5,33,84,351],
-    ['01/23/14:00', 2, 15,1,77,238],
-    ['01/23/14:15', 17, 9,23,80,211],
-    ['01/23/14:30', 18, 10,231,52,125],
-    ['01/23/14:45', 56, 5,56,66,121],
-    ['01/23/15:00', 82, 3,82,25,64],
-    ['01/23/15:15', 11, 19,32,43,87],
-    ['01/23/15:30', 10, 5,33,84,351],
-    ['01/23/15:45', 56, 5,56,66,121],
-    ['01/23/16:00', 82, 3,82,25,64],
-    ['01/23/16:15', 11, 19,32,43,87],
-    ['01/23/16:30', 10, 5,33,84,351],
-    ['01/23/16:45', 10, 5,33,84,351],
-    ['01/23/17:00', 2, 15,1,77,238],
-    ['01/23/17:15', 17, 9,23,80,211],
-    ['01/23/17:30', 18, 10,231,52,125],
-    ['01/23/17:45', 56, 5,56,66,121],
-    ['01/23/18:00', 82, 3,82,25,64],
-    ['01/23/18:15', 11, 19,32,43,87],
-    ['01/23/18:30', 10, 5,33,84,351],
-    ['01/23/18:45', 10, 5,33,84,351],
-    ['01/23/19:00', 2, 15,1,77,238],
-    ['01/23/19:15', 17, 9,23,80,211],
-    ['01/23/19:30', 18, 10,231,52,125],
-    ['01/23/19:45', 56, 5,56,66,121],
-    ['01/23/20:00', 82, 3,82,25,64],
-    ['01/23/21:15', 11, 19,32,43,87],
-    ['01/23/21:30', 10, 5,33,84,351],
-    ['01/23/21:45', 56, 5,56,66,121],
-    ['01/23/22:00', 82, 3,82,25,64],
-    ['01/23/22:15', 11, 19,32,43,87],
-    ['01/23/22:30', 10, 5,33,84,351],
-    ['01/23/22:45', 10, 5,33,84,351],
-    ['01/23/23:00', 2, 15,1,77,238],
-    ['01/23/23:15', 17, 9,23,80,211],
-    ['01/23/23:30', 18, 10,231,52,125],
-    ['01/23/23:45', 56, 5,56,66,121],
-    ['01/24/00:00', 82, 3,82,25,64],
-    ['01/24/00:15', 11, 19,32,43,87],
-    ['01/24/00:30', 10, 5,33,84,351],
-    ['01/24/00:45', 10, 5,33,84,351],
-    ['01/24/01:00', 2, 15,1,77,238],
-    ['01/24/01:15', 17, 9,23,80,211],
-    ['01/24/01:30', 18, 10,231,52,125],
-    ['01/24/01:45', 56, 5,56,66,121],
-    ['01/24/02:00', 82, 3,82,25,64],
-    ['01/24/02:15', 11, 19,32,43,87],
-    ['01/24/02:30', 10, 5,33,84,351],
-    ['01/24/02:45', 10, 5,33,84,351],
-    ['01/24/03:00', 2, 15,1,77,238],
-    ['01/24/03:15', 17, 9,23,80,211],
-    ['01/24/03:30', 18, 10,231,52,125],
-    ['01/24/03:45', 56, 5,56,66,121],
-    ['01/24/04:00', 82, 3,82,25,64],
-    ['01/24/04:15', 11, 19,32,43,87],
-    ['01/24/04:30', 10, 5,33,84,351],
-    ['01/24/04:45', 10, 5,33,84,351],
-    ['01/24/05:00', 2, 15,1,77,238],
-    ['01/24/05:15', 17, 9,23,80,211],
-    ['01/24/05:30', 18, 10,231,52,125],
-    ['01/24/05:45', 56, 5,56,66,121],
-    ['01/24/06:00', 82, 3,82,25,64],
-    ['01/24/06:15', 11, 19,32,43,87],
-    ['01/24/06:30', 10, 5,33,84,351],
-    ['01/24/06:45', 10, 5,33,84,351],
-    ['01/24/07:00', 2, 15,1,77,238],
-    ['01/24/07:15', 17, 9,23,80,211],
-    ['01/24/07:30', 18, 10,231,52,125],
-    ['01/24/07:45', 56, 5,56,66,121],
-    ['01/24/08:00', 82, 3,82,25,64],
-    ['01/24/08:15', 11, 19,32,43,87],
-]
-  
+
 function DashBoard() {
   const [device,setDevice] = useState('各種電器');
-  const electricity = 15325;
-  const bill  = 1234;
+  var electricity = 0;
+  var bill  = 1234;
   var drawingData = [];
 
 
   const [demo_day, setDemoData] = useState(null);
+  
   const [priority_list, setPriority] = useState(null);
 
   useEffect(() => {
@@ -125,67 +54,139 @@ function DashBoard() {
     });
   }, []);
 
-  
+  const [seconds, setSeconds] = useState(0);
   console.log("demo_data", demo_day);
   console.log("priority_list", priority_list);
 
-  const [seconds, setSeconds] = useState(0);
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
+        
       setSeconds(seconds => seconds + 1);
     }, 1000);
+    
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    
-  })
-
+  console.log("sec",seconds);
+  var data = [];
+  //['x', 'Pot', 'Purifier White','Purifier Black','Purifier Small','Heater','Dryer']
+  data.push([
+    'x', 'Pot', 'Purifier White','Purifier Black','Purifier Small','Heater','Dryer'
+    //   {type: 'number',label:'x',role:'interval'},
+    //   {type: 'number',label:'Pot',role:'interval'},
+    //   {type: 'number',label:'Purifier White',role:'interval'},
+    //   {type: 'number',label:'Purifier Black',role:'interval'},
+    //   {type: 'number',label:'Purifier Small',role:'interval'},
+    //   {type: 'number',label:'Heater',role:'interval'},
+    //   {type: 'number',label:'Dryer',role:'interval'},
+  ]);
+  if(demo_day===null){
+    data.push(['2022-01-24 00:10:00','0','0','0','0','0']);
+  }
+  else{
+    var range = seconds;
+    if(range>=144) range = 143;
+    var i =0;
+    for( i =0;i<=range;i++){
+        data.push([demo_day[i]['timestamp'],demo_day[i]['pot'],demo_day[i]['purifier_white'],demo_day[i]['purifier_black'],demo_day[i]['purifier_small'],demo_day[i]['heater'],demo_day[i]['dryer']])
+        electricity = demo_day[i]['pot']+demo_day[i]['purifier_white']+demo_day[i]['purifier_black']+demo_day[i]['purifier_small']+demo_day[i]['heater']+demo_day[i]['dryer'];
+    }
+    var time = i*10/60;
+  }
+  electricity = electricity.toFixed(2);
+  bill = electricity/1000*5;
+  bill = bill.toFixed(2);
   
+ console.log(data);
 
+  const column = [
+      {title:'device',field:'device'},
+      {
+        title:'priority',field:'priority'
+      }
+    ]
+    var table =[ ];
+    if(priority_list!=null){table = [
+        {
+            'device':'heater',
+            'priority':priority_list['heater']
+        },
+        {
+            'device':'pot',
+            'priority':priority_list['pot']
+        },
+        {
+            'device':'dryer',
+            'priority':priority_list['dryer']
+        },
+        {
+            'device':'purifier_white',
+            'priority':priority_list['purifier_white']
+        },
+        {
+            'device':'purifier_black',
+            'priority':priority_list['purifier_black']
+        },
+        {
+            'device':'purifier_small',
+            'priority':priority_list['purifier_small']
+        },
+        
+    ]}
+    
+  
   if(device === "各種電器" ||device === "---請選擇電器---" ){
-    drawingData = LineData;
+    drawingData = data;
   }
   else if(device ==='全部電器'){
-    drawingData.push(['x','總電量']);
-    for(var i = 1;i<LineData.length;i++){
-      drawingData.push([LineData[i][0],LineData[i][1]+LineData[i][2]+LineData[i][3]+LineData[i][4]+LineData[i][5]]);
+    drawingData.push(['x','Electricity']);
+    for(var i = 1;i<data.length;i++){
+      drawingData.push([data[i][0],data[i][1]+data[i][2]+data[i][3]+data[i][4]+data[i][5]+data[i][6]]);
+      electricity +=data[i][1]+data[i][2]+data[i][3]+data[i][4]+data[i][5]+data[i][6]
     }
     // console.log(drawingData);
   }
-  else if(device ==='電視'){
-    drawingData.push(['x','電視']);
-    for( i = 1;i<LineData.length;i++){
-      drawingData.push([LineData[i][0],LineData[i][1]]);
+  else if(device ==='電鍋'){
+    drawingData.push(['x','Pot']);
+    for( i = 1;i<data.length;i++){
+      drawingData.push([data[i][0],data[i][1]]);
     }
     // console.log(drawingData);
   }
-  else if(device ==='電風扇'){
-    drawingData.push(['x','電風扇']);
-    for(i = 1;i<LineData.length;i++){
-      drawingData.push([LineData[i][0],LineData[i][2]]);
+  else if(device ==='暖氣'){
+    drawingData.push(['x','Heater']);
+    for(i = 1;i<data.length;i++){
+      drawingData.push([data[i][0],data[i][5]]);
     }
     // console.log(drawingData);
   }
-  else if(device ==='烤箱'){
-    drawingData.push(['x','烤箱']);
-    for(i = 1;i<LineData.length;i++){
-      drawingData.push([LineData[i][0],LineData[i][4]]);
+  else if(device ==='空氣清淨機-白'){
+    drawingData.push(['x','Purifier-white']);
+    for(i = 1;i<data.length;i++){
+      drawingData.push([data[i][0],data[i][2]]);
     }
     // console.log(drawingData);
   }
-  else if(device ==='空氣清淨機'){
-    drawingData.push(['x','空氣清淨機']);
-    for(i = 1;i<LineData.length;i++){
-      drawingData.push([LineData[i][0],LineData[i][3]]);
+  else if(device ==='空氣清淨機-黑'){
+    drawingData.push(['x','Purifier-black']);
+    for(i = 1;i<data.length;i++){
+      drawingData.push([data[i][0],data[i][3]]);
+    }
+    // console.log(drawingData);
+  }
+  else if(device ==='空氣清淨機-小'){
+    drawingData.push(['x','Purifier-small']);
+    for(i = 1;i<data.length;i++){
+      drawingData.push([data[i][0],data[i][4]])
     }
     // console.log(drawingData);
   }
   else if(device ==='吹風機'){
-    drawingData.push(['x','吹風機']);
-    for(i = 1;i<LineData.length;i++){
-      drawingData.push([LineData[i][0],LineData[i][5]])
+    drawingData.push(['x','Dryer']);
+    for(i = 1;i<data.length;i++){
+      drawingData.push([data[i][0],data[i][6]])
     }
     // console.log(drawingData);
   }
@@ -246,8 +247,8 @@ function DashBoard() {
                                     </Col>
                                     <Col xs="12">
                                         <div className="numbers">
-                                        <p className="header">Electricity Bill</p>
-                                        <Card.Title as="h4">$ {bill}</Card.Title>
+                                        <p className="header">Average Usage</p>
+                                        <Card.Title as="h4">{(electricity/time).toFixed(2) } Wattage/Hr</Card.Title>
                                         </div>
                                     </Col>
                                 </Row>
@@ -329,12 +330,28 @@ function DashBoard() {
                                 <Card.Body>
                                 <Card.Title as="h4"> <p className="header">Pie Chart</p></Card.Title>
                                     <div className="ct-chart" id="chartHours">
-                                        <Piechart PieData = {LineData}/>
+                                        <Piechart PieData = {data}/>
                                     </div>
                                 </Card.Body>
                                 
                             </Card>
                         </Col>
+                        
+                    </Row>
+                    <Row>
+                    <Col md="6" lg = '6' xs='12' sm='12' >
+                            <Card >
+                                
+                                <Card.Body>
+                                
+                                    <div className="ct-chart" id="chartHours">
+                                        {(priority_list!=null)?(<MaterialTable columns={column} data={table} title={'Priority List'}></MaterialTable>):(<></>)}
+                                    </div>
+                                </Card.Body>
+                                
+                            </Card>
+                        </Col>
+                        
                         
                     </Row>
                     </Card.Body>
