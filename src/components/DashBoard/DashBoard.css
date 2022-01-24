@@ -5,3 +5,15 @@
 .pos{
     margin-top: 250px;
 }
+.dash{
+    opacity: 0.5;
+}
+.header{
+    opacity: 1;
+}
+.title{
+    font-size: 600;
+    color: white;
+    border-width: 2px;
+    border-color: gray;
+}

@@ -36,10 +36,9 @@ const SideBar = () => {
   
   return (
     <>
-      <div id="header">
-          {/* collapsed props to change menu size using menucollapse state */}
-        <ProSidebar fixed ='top' collapsed = {menucollapse}>
-          <SidebarHeader>
+      <div id="header" style={{padding:'0px 0px 0px'}}>
+          {(window.innerWidth<450)?(<></>):(<ProSidebar fixed ='top' collapsed = {menucollapse} >
+          <SidebarHeader >
             <div className="close-menu" onClick={menuclick}>
               {menucollapse?(<FiArrowRightCircle/>):(<FiArrowLeftCircle/>)}
             </div>
@@ -60,7 +59,8 @@ const SideBar = () => {
               <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
             </Menu>
           </SidebarFooter>
-        </ProSidebar>
+        </ProSidebar>)}
+        
       </div>
     </>
   );

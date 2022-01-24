@@ -12,13 +12,13 @@ import { Container, Row, Col } from 'react-bootstrap';
 import background from './Image/background4.jpeg';
 function App() {
   return (
-    <div  style ={{backgroundImage:`url(${background})`}}>
+    <div  style ={{backgroundImage:`url(${background})`,margin:'0',padding:'0'}}>
       <Container fluid>
-      <Row>
-        <Col md={2} lg={2}>
+      <Row  style={{height:'150rem',fixed:'top',margin:'0px 0px'}}>
+        
           <SideBar />
-        </Col>
-        <Col md={10} lg={10}>
+        <Col md={2} lg={2} style={{height:'5px',}}><p></p></Col>
+        <Col md={10} lg={10} xs={12} sm={12}>
           <Row>
             <Header />
           </Row>

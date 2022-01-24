@@ -11,7 +11,7 @@ function Header() {
 
       <Navbar fixed='top' expand = 'sm'bg='dark' variant = 'dark'>
         <Container  >
-            <img src = {image} height={25} width={25} style={{marginRight:'5px'}}/>
+            
             <Navbar.Brand>
               
               Careerhack
@@ -19,7 +19,12 @@ function Header() {
             <Navbar.Toggle aria-controls='responsive-navbar-nav'/>
 
             <Navbar.Collapse>
-              <Nav.Link href = '/Aboutus' style = {{color:'white'}}>Aboutus</Nav.Link>
+              {(window.innerWidth<450)?(<><Nav.Link href = '/' style = {{color:'white'}}>Home</Nav.Link>
+            <Nav.Link href = '/DashBoard' style = {{color:'white'}}>DashBoard</Nav.Link>
+            <Nav.Link href = '/Analysis' style = {{color:'white'}}>Analysis</Nav.Link>
+            <Nav.Link href = '/Settings' style = {{color:'white'}}>Settings</Nav.Link></>):(<div><p> </p></div>)}
+            
+            <Nav.Link href = '/Aboutus' style = {{color:'white'}}>About  Us</Nav.Link>
             </Navbar.Collapse>
 
         </Container>

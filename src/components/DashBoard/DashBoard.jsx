@@ -156,14 +156,14 @@ function DashBoard() {
                 </Col>
             </Row>
             <Row>
-                <Col xs = '3' sm = '2' md = '2' lg = '1'><p> </p>
+                <Col  sm = '2' md = '2' lg = '1'><p> </p>
                 </Col>
-                <Col xs = '9' lg = '11' sm = '12' md='12'>
-                    <Card>
-                        <Card.Header>
-                            <Card.Title as="h1" style={{fontWeight:'600'}}>DashBoard</Card.Title>
+                <Col xs = '12' lg = '11' sm = '12' md='12'>
+                    <Card  bg='transparent'>
+                        <Card.Header className='header'>
+                            <Card.Title as="h1" className='title'>DashBoard</Card.Title>
                         </Card.Header>
-                        <Card.Body>
+                        <Card.Body  >
                             <Row>
                             <Col lg = '4' sm = '6' xs = '12' md = '6'>
                                 <Card className="card-stats">

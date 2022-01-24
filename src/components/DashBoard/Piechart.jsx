@@ -32,26 +32,28 @@ const Piechart=({PieData})=> {
       tmp.push(ele);
       data.push(tmp);
     }
-    var w = '600px';
-    var h  = '500px';
+    var w = '400px';
+    var h  = '400px';
     if(window.innerWidth<450 ){
+      w = '250px';
+      h = '200px';
+    }
+    else if(window.innerWidth<800){
       w = '200px';
       h = '200px';
-      console.log('yes');
     }
-    else if(window.innerWidth<900 ||window.innerHeight<576){
-      w = '250px';
-      h = '250px';
-      console.log('yes');
+    else if(window.innerWidth<1000 ){
+      w = '280px';
+      h = '280px';
     }
-    else if(window.innerWidth<950 ||window.innerHeight<950){
-      w = '340px';
-      h = '340px';
-      console.log('yes');
+    else if(window.innerWidth>1300 ){
+      w = '400px';
+      h = '400px';
     }
     var opt = {
       legend:{position:'bottom'}
     };
+    console.log(w,h);
     return (
       <div className="container mt-5">
         {/* <h2>React Google Line Chart Example</h2> */}
