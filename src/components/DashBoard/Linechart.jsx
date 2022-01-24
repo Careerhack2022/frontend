@@ -28,7 +28,7 @@ const Linechart =({LineData})=> {
     }
 
   }
-    console.log(LineData);
+    // console.log(LineData);
     var w = '350px';
     var h  = '350px';
     console.log(window.innerWidth);
@@ -48,7 +48,7 @@ const Linechart =({LineData})=> {
       w = '400px';
       h = '400px';
     }
-    console.log("line",w,h);
+    // console.log("line",w,h);
     return (
       <div className="container mt-5">
         

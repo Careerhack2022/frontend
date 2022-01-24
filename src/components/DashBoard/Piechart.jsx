@@ -53,7 +53,7 @@ const Piechart=({PieData})=> {
     var opt = {
       legend:{position:'bottom'}
     };
-    console.log(w,h);
+    // console.log(w,h);
     return (
       <div className="container mt-5">
         {/* <h2>React Google Line Chart Example</h2> */}
