@@ -28,7 +28,7 @@ const Settings =()=>{
                 <Col xs = '12' lg = '11' sm = '12' md='12'>
                    <Card style={{height:'100rem'}} bg = 'transparent'>
                    <Card.Header>
-                            <Card.Title as="h1" style={{fontWeight:'600',color:'white'}}>Settings</Card.Title>
+                   <Card.Title ><big className='title'>Settings</big> </Card.Title>
                         </Card.Header>
                     </Card>
                 </Col>
